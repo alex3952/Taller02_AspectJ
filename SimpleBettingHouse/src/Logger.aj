@@ -1,3 +1,8 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+
+import com.bettinghouse.User;
 
 public aspect Logger {
 	pointcut success() : call(void signUp());
@@ -5,14 +10,14 @@ public aspect Logger {
     	System.out.println("**** User created ****");
     }
     
-    pointcut singUpPoint(String nickname, String password) : call(void signUp());
+    pointcut singUpPoint(User user): call(* successfulSignUp(User, Person)) && args(user);
 
-    before(String nickname, String password) : singUpPoint(nickname, password) {
+    before(User user) : singUpPoint(user) {
 
       // Mostrar información en pantalla
       String parte1 = "Usuario Registrado: ";
-      String parte2 = "[nickname = " + nickname;
-      String parte3 = ", password = " + password;
+      String parte2 = "[nickname = " + user.getNickname();
+      String parte3 = ", password = " + user.getPassword();
       String parte4 = "] Fecha: [" + LocalDateTime.now() + "]";
       
       System.out.print(parte1);
