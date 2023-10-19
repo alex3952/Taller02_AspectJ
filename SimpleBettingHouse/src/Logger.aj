@@ -8,21 +8,36 @@ import java.util.Calendar;
 import com.bettinghouse.Person;
 import com.bettinghouse.User;
 
+
 public aspect Logger {
 	
+
 	pointcut successLog(User usr): call(* effectiveLog*(User)) && args(usr);
 
     after(User usr): successLog(usr) {
         System.out.println("Log");
         String suceso = "cerrada";
         if (thisJoinPoint.getSignature().getName().equals("effectiveLogIn")) {
-            suceso = "inicada";
+            suceso = "iniciada";
         }
         String msg = String.format("Sesión %s por usuario: [%s]", suceso, usr.getNickname());
         escribirLog("Log.txt",msg);
     }
 	
-	private static void escribirLog(String fileName, String text) {
+
+    pointcut singUpPoint(User user, Person person): call(void successfulSignUp(User, Person)) && args(user, person);
+
+    after(User user, Person person) : singUpPoint(user, person) {
+      // Mostrar información en pantalla
+      String parte1 = "Usuario Registrado: ";
+      String parte2 = "[nickname = " + user.getNickname();
+      String parte3 = ", password = " + user.getPassword() +"]";
+      String parte4 = parte1+parte2+parte3;
+      
+      escribirLog("Register.txt",parte4);
+    }
+    
+    private static void escribirLog(String fileName, String text) {
         File file = new File(fileName);
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
         String time = sdf.format(Calendar.getInstance().getTime());
@@ -33,5 +48,5 @@ public aspect Logger {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+	}
 }
