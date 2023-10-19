@@ -3,17 +3,23 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 import com.bettinghouse.User;
+import com.bettinghouse.Person;
 
 public aspect Logger {
+	
 	pointcut success() : call(void signUp());
     after() : success() {
     	System.out.println("**** User created ****");
     }
     
-    pointcut singUpPoint(User user): call(* successfulSignUp(User, Person)) && args(user);
+    /**
+     * Registra un evento de registro de nuevo usuario y lo guarda en Register.txt
+     * @param user
+     * @param person
+     */
+    pointcut singUpPoint(User user, Person person): call(void successfulSignUp(User, Person)) && args(user, person);
 
-    before(User user) : singUpPoint(user) {
-
+    after(User user, Person person) : singUpPoint(user, person) {
       // Mostrar información en pantalla
       String parte1 = "Usuario Registrado: ";
       String parte2 = "[nickname = " + user.getNickname();
@@ -22,7 +28,7 @@ public aspect Logger {
       
       System.out.print(parte1);
       System.out.print(parte2);
-      System.out.println(parte3);
+      System.out.print(parte3);
       System.out.println(parte4);
 
       // Guardar información en archivo
