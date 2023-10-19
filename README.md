@@ -1,9 +1,8 @@
 # Taller02_AspectJ
 
-## Descargando Eclipse
+## Instalando apsectj
 ![WhatsApp Image 2023-10-18 at 8 53 43 PM](https://github.com/alex3952/Taller02_AspectJ/assets/146979603/71f26c8e-919a-4c78-87b2-e5c27bc29fc3)
 
-## Instalando apsectj
 ![WhatsApp Image 2023-10-18 at 8 53 43 PM (1)](https://github.com/alex3952/Taller02_AspectJ/assets/146979603/e14a157f-7d20-4bdd-aa1d-c4a4cab5057a)
 
 ![WhatsApp Image 2023-10-18 at 8 53 43 PM (2)](https://github.com/alex3952/Taller02_AspectJ/assets/146979603/6e22074c-4c22-4ab5-97e5-824a6b6ffb62)
