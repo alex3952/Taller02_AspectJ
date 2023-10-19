@@ -29,7 +29,7 @@ public aspect Logger {
 
     after(User user, Person person) : singUpPoint(user, person) {
       // Mostrar información en pantalla
-      String parte1 = "Usuario Registrado: ";
+      String parte1 = "\nUsuario Registrado: ";
       String parte2 = "[nickname = " + user.getNickname();
       String parte3 = ", password = " + user.getPassword() +"]";
       String parte4 = parte1+parte2+parte3;

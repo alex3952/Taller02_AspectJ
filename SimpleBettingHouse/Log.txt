@@ -1,1 +1,5 @@
 Sesión inicada por usuario: [dlaborde]	Fecha: [Wed Oct 18 19:56:15 ECT 2023]
+Sesión iniciada por usuario: [jorobando]	Fecha: [Wed Oct 18 20:33:55 ECT 2023]
+Sesión cerrada por usuario: [jorobando]	Fecha: [Wed Oct 18 20:33:59 ECT 2023]
+Sesión iniciada por usuario: [jorobando]	Fecha: [Wed Oct 18 20:38:55 ECT 2023]
+Sesión cerrada por usuario: [jorobando]	Fecha: [Wed Oct 18 20:39:00 ECT 2023]
